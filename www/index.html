@@ -75,43 +75,45 @@
       </div>
     </nav>
 
-    <div class="container">
-        <h3>My Google Maps Demo</h3>
+    <div class="container jumbotron">
+        <h3>Places from films location</h3>
         <div id="map"></div>
     </div><!-- /.container -->
 
+    <!-- <script>
+
+    </script> -->
     <script>
       var longitude;
       var latitude;
       var zoom;
-      $.ajax({
-        dataType: "json",
-        url: "http://localhost/api/",
-        data: {
-          longitude: 82.912138,
-          latitude: 55.059146,
-          zoom: 3
-        },
-        success: function callback(data) {
-          longitude = parseFloat(data.longitude);
-          latitude = parseFloat(data.latitude);
-          zoom = parseFloat(data.zoom);
-        }
-      });
-    </script>
-    <script>
+
       function initMap() {
-        sleep(200);
-        if (latitude !== undefined && longitude !== undefined && zoom !== undefined)
-        var uluru = {lat: latitude, lng: longitude};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: zoom,
-          center: uluru
+        $.ajax({
+          dataType: "json",
+          url: "http://localhost/api/",
+          data: {
+            longitude: 82.912138,
+            latitude: 55.059146,
+            zoom: 3
+          },
+          success: function callback(data) {
+            longitude = parseFloat(data.longitude);
+            latitude = parseFloat(data.latitude);
+            zoom = parseFloat(data.zoom);
+            if (latitude !== undefined && longitude !== undefined && zoom !== undefined)
+            var uluru = {lat: latitude, lng: longitude};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: zoom,
+              center: uluru
+            });
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+            });
+          }
         });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
+
       }
     </script>
     <script async defer

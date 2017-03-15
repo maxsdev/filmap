@@ -26,10 +26,10 @@ class FilmapDB {
   public static function getInstance() {
       if (is_null(self::$instance)) {
           self::$instance = new FilmapDB();
-          self::$instance->dbName = 'filmap';
+          self::$instance->dbName = 'filmap_db';
           self::$instance->dbHost = 'localhost';
           self::$instance->dbUser = 'root';
-          self::$instance->dbPassword = 'sierra';
+          self::$instance->dbPassword = '';
       }
       return self::$instance;
   }
