@@ -15,6 +15,7 @@ function dmsToDecimal(dms) {
       result *= -1;
     }
   }
+  result = parseFloat(result.toFixed(6));
   return result;
 }
 
@@ -36,8 +37,8 @@ function initMap() {
     },
     success: function callback(data) {
       data.forEach(function (item, i, array) {
-        latitude = dmsToDecimal(item.longitude);
-        longitude = dmsToDecimal(item.latitude);
+        longitude = dmsToDecimal(item.longitude);
+        latitude = dmsToDecimal(item.latitude);
         if (latitude !== undefined && longitude !== undefined) {
           var pos = {lat: latitude, lng: longitude};
           var marker = new google.maps.Marker({
